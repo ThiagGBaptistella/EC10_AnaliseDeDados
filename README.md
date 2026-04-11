@@ -2,29 +2,45 @@
 **Tema:** Circular Economy (Economia Circular)
 **Entrega:** Milestone 3 - Modelagem Preditiva
 
-## 1. Resumo do Problema
-[cite_start]Este projeto utiliza Machine Learning para prever a **pegada de carbono (CO2)** em operações de logística reversa[cite: 9, 14]. [cite_start]O objetivo é oferecer uma ferramenta de inteligência para que gestores possam otimizar rotas e escolher frotas que minimizem o impacto ambiental, promovendo uma economia circular eficiente[cite: 9].
+## 1. Resumo do Problema e Objetivos
+Este projeto desenvolve uma solução de Business Analytics hospedada no Google Colab para resolver desafios de rastreabilidade de pegada de carbono e eficiência logística. O objetivo desta Milestone (M3) foi implementar, treinar e validar modelos de Machine Learning para prever as emissões de $CO_2$ em operações de logística reversa, transformando dados brutos em inteligência para tomada de decisão estratégica.
 
-## 2. Tabela Comparativa de Performance
-[cite_start]Seguindo os requisitos técnicos, comparamos dois algoritmos distintos:
+## 2. Metodologia de Modelagem
+A fase de modelagem seguiu o ciclo completo de ciência de dados conforme os requisitos técnicos:
+* **Pré-processamento**: Aplicação de *One-Hot Encoding* para variáveis categóricas de frota e *StandardScaler* para normalização de variáveis numéricas.
+* **Divisão de Dados**: Separação rigorosa entre conjuntos de treino (80%) e teste (20%) para garantir a validade estatística dos resultados.
+* **Algoritmos**: Implementação comparativa entre modelos lineares e modelos de conjunto baseados em árvores (Random Forest).
 
-| Modelo | R² (Precisão) | RMSE (Erro Médio) | Tempo de Processamento |
-| :--- | :--- | :--- | :--- |
-| **Linear Regression** | 0.82 | 41.5 kg | 8 ms |
-| **Random Forest** | **0.95** | **14.2 kg** | 210 ms |
+## 3. Relatório de Performance (Tabela Comparativa)
+Abaixo, os resultados obtidos na validação dos modelos, destacando a superioridade do algoritmo selecionado:
 
-## 3. Modelo Final e Conclusão Técnica
-O modelo escolhido para produção foi o **Random Forest Regressor**. 
+| Métrica | Linear Regression | **Random Forest (Escolhido)** |
+| :--- | :--- | :--- |
+| **RMSE** (Erro Médio Quadrático) | 1530.96 | **614.91** |
+| **MAE** (Erro Médio Absoluto) | 1097.67 | **292.25** |
+| **$R^2$** (Precisão) | 0.6881 | **0.9496** |
+| **Tempo de Processamento** | 40.53 ms | 468.69 ms |
 
-**Justificativa:**
-- [cite_start]**Equilíbrio Viés/Variância:** O modelo apresentou alta capacidade de generalização no conjunto de teste (20% dos dados), sem sinais de *overfitting*.
-- **Complexidade:** Por ser um modelo de conjunto (Ensemble), ele capturou melhor as relações não-lineares entre o peso da carga e a eficiência dos combustíveis ESG (Elétrico vs Diesel).
-- [cite_start]**Impacto no Negócio:** A redução do erro (RMSE) permite uma previsão mais fiel das metas de descarbonização da empresa[cite: 9].
+## 4. Conclusão Técnica e Escolha do Modelo
+O algoritmo **Random Forest Regressor** foi selecionado para a solução final.
 
-## 4. Como Reproduzir este Projeto
-1. Clone o repositório: `git clone (https://github.com/maiconbld/EC10_AnaliseDeDados).git`
-2. Instale as dependências: `pip install -r requirements.txt`
-3. Abra o notebook na pasta `/notebooks` via Google Colab ou Jupyter.
+* **Equilíbrio Viés e Variância**: O modelo apresentou um $R^2$ de aproximadamente **0.95**, indicando que a inteligência explica 95% da variabilidade das emissões de $CO_2$ nos dados de teste, sem sinais de *overfitting*.
+* **Complexidade**: Por ser um modelo *Ensemble*, o Random Forest capturou com precisão as relações não-lineares entre peso da carga, distância e tipo de combustível ESG.
+* **Impacto no Negócio**: A redução de mais de 50% no erro médio (RMSE) em relação ao baseline permite previsões confiáveis para metas de descarbonização e retorno sobre investimento (ROI) em logística circular.
+
+## 5. Estrutura do Repositório
+* `/notebooks`: Notebook Python (.ipynb) com o ciclo completo de modelagem.
+* `/models`: Modelo final exportado (`modelo_final.joblib`).
+* `requirements.txt`: Lista de bibliotecas utilizadas (pandas, scikit-learn, joblib).
+* `README.md`: Documentação executiva do projeto.
+
+## 6. Instruções de Reprodução
+1. Clone este repositório: `git clone https://github.com/maiconbld/EC10_AnaliseDeDados.git`
+2. Instale as dependências necessárias: `pip install -r requirements.txt`
+3. Execute o notebook presente na pasta `/notebooks` para visualizar o treinamento e a validação.
 
 ---
-**Equipe:** [Maicon Dias, Pedro Henrike, Thiago Guedes]
+**Equipe (Grupo 03 - Circular Economy):**
+* Maicon Dias
+* Pedro Henrike
+* Thiago Guedes
