@@ -41,6 +41,7 @@ O algoritmo **Random Forest Regressor** foi selecionado para a solução final.
 
 ---
 **Equipe (Grupo 03 - Circular Economy):**
-* Maicon Dias
-* Pedro Henrike
-* Thiago Guedes
+* Maicon Dias 082210032
+* Pedro Henrike 082210025
+* Thiago Guedes 082210010
+  
